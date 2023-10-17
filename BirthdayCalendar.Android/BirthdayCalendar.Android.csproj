@@ -86,7 +86,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\contact-gray.png" />
+    <AndroidResource Include="Resources\drawable\contact_gray.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BirthdayCalendar\BirthdayCalendar.csproj">
@@ -98,22 +98,22 @@
     <AndroidResource Include="Resources\drawable\background.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\contact-white.png" />
+    <AndroidResource Include="Resources\drawable\contact_white.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\home-gray.png" />
+    <AndroidResource Include="Resources\drawable\home_gray.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\home-white.png" />
+    <AndroidResource Include="Resources\drawable\home_white.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\loupe-gray.png" />
+    <AndroidResource Include="Resources\drawable\loupe_gray.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\party-hat.png" />
+    <AndroidResource Include="Resources\drawable\party_hat.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\pen-white.png" />
+    <AndroidResource Include="Resources\drawable\pen_white.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\user.png" />

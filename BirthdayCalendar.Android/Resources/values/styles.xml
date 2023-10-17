@@ -2,7 +2,7 @@
 <resources>
   <style name="MainTheme" parent="MainTheme.Base">
 	  <item name="android:statusBarColor">@color/darkGreen</item>
-	  <item name="android:windowBackground">@drawable/background</item>
+	  <!--<item name="android:windowBackground">@drawable/background</item>-->
 	  <item name="android:navigationBarColor">@android:color/transparent</item>
 	  <item name="android:windowLightNavigationBar">true</item>
   </style>
