@@ -14,5 +14,12 @@ namespace BirthdayCalendar
         {
             InitializeComponent();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            Date.Text = DateTime.Now.ToString("dd.MM.yyyy");
+        }
     }
 }
