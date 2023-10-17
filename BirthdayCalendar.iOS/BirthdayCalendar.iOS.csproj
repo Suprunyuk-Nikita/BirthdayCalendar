@@ -133,4 +133,31 @@
       <Name>BirthdayCalendar</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\contact-gray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\contact-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\home-gray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\home-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\loupe-gray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\party-hat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pen-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\background.png" />
+  </ItemGroup>
 </Project>
