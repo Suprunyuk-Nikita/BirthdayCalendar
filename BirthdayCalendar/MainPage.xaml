@@ -4,11 +4,25 @@
              x:Class="BirthdayCalendar.MainPage">
 
     <Grid HorizontalOptions="FillAndExpand">
-        <Image Source="background.png" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
-        <StackLayout Padding="15, 8, 15, 10">
-            <Label x:Name="Date" FontFamily="Comfortaa" FontSize="14" FontAttributes="Bold" TextColor="#EFF2F6" HorizontalTextAlignment="End"/>
-            <Label FontFamily="Comfortaa" FontSize="26" FontAttributes="Bold" TextColor="#145535" Text="Birthday!" HorizontalTextAlignment="Center"/>
+        <Image x:Name="Background" Source="background.png" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
+        <StackLayout Padding="15, 8, 15, 10" Spacing="0">
+            <Label x:Name="Date" FontFamily="Comfortaa" FontAttributes="Bold" TextColor="#EFF2F6" HorizontalTextAlignment="End"/>
+            <Label x:Name="Title" FontFamily="Comfortaa" FontAttributes="Bold" TextColor="#145535" Text="Birthday!" HorizontalTextAlignment="Center"/>
+            <RelativeLayout>
+                <!--Тут список из БД--> 
+            </RelativeLayout>
+            <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal">
+                <BoxView x:Name="test1" BackgroundColor="#EFF2F6"/>
+                <BoxView x:Name="test2" BackgroundColor="#EFF2F6"/>
+                <BoxView x:Name="test3" BackgroundColor="#EFF2F6"/>
+                <BoxView x:Name="test4" BackgroundColor="#EFF2F6"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Spacing="0">
+                <BoxView x:Name="NavBtnHome" BackgroundColor="#36B54C" CornerRadius="58" HorizontalOptions="Center" VerticalOptions="End"/>
+                <BoxView x:Name="NavBtnList" BackgroundColor="#EFF2F6" CornerRadius="58" HorizontalOptions="Center" VerticalOptions="End"/>
+            </StackLayout>
         </StackLayout>
+        
     </Grid>
 
 </ContentPage>
