@@ -21,9 +21,18 @@ namespace BirthdayCalendar
 
             Background.SizeChanged += BackgroundSizeChanged;
 
+            ResizeObjects();
+
             Date.Text = DateTime.Now.ToString("dd.MM.yyyy");
         }
+
         private void BackgroundSizeChanged(object sender, EventArgs e)
+        {
+            ResizeObjects();
+            Background.SizeChanged -= BackgroundSizeChanged;
+        }
+
+        public void ResizeObjects()
         {
             const double oldBackgroundWidth = 320;
             double backgroundWidth = Background.Width;
@@ -40,20 +49,11 @@ namespace BirthdayCalendar
 
             NavBtnList.HeightRequest = 58d * scaleFactor;
             NavBtnList.WidthRequest = 58d * scaleFactor;
+        }
 
-            test1.HeightRequest = 51d * scaleFactor;
-            test1.WidthRequest = 51d * scaleFactor;
-
-            test2.HeightRequest = 51d * scaleFactor;
-            test2.WidthRequest = 51d * scaleFactor;
-
-            test3.HeightRequest = 51d * scaleFactor;
-            test3.WidthRequest = 51d * scaleFactor;
-
-            test4.HeightRequest = 51d * scaleFactor;
-            test4.WidthRequest = 51d * scaleFactor;
-
-            Background.SizeChanged -= BackgroundSizeChanged;
+        private async void NavBtnList_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ContactsList());
         }
     }
 }

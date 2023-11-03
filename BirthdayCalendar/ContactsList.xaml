@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BirthdayCalendar.ContactsList"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand">
+            <Image x:Name="Background" Source="background_contacts_page.png" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
+            <StackLayout Padding="15, 8, 15, 10" Spacing="0">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Spacing="0">
+                    <Button x:Name="NavBtnHome" Clicked="NavBtnHome_Clicked" BackgroundColor="#0000" CornerRadius="58" HorizontalOptions="Center" VerticalOptions="End"/>
+                    <Button x:Name="NavBtnList" BackgroundColor="#0000" CornerRadius="58" HorizontalOptions="Center" VerticalOptions="End"/>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
