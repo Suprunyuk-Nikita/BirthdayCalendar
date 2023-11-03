@@ -39,10 +39,10 @@ namespace BirthdayCalendar
             double scaleFactor = backgroundWidth / oldBackgroundWidth;
 
             Date.FontSize = 14d * scaleFactor;
-            Date.Margin = new Thickness(0, 0, 0, 13 * scaleFactor);
+            Date.Margin = new Thickness(0, 0, 0, 13d * scaleFactor);
 
             Title.FontSize = 26d * scaleFactor;
-            Title.Margin = new Thickness(0, 0, 0, 65 * scaleFactor);
+            Title.Margin = new Thickness(0, 0, 0, 65d * scaleFactor);
 
             NavBtnHome.HeightRequest = 58d * scaleFactor;
             NavBtnHome.WidthRequest = 58d * scaleFactor;

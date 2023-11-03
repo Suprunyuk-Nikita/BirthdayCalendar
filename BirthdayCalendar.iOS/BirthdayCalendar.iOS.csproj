@@ -134,25 +134,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\contact_gray.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\contact_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\home_gray.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\home_white.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\loupe_gray.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\party_hat.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\pen_white.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\user.png" />
@@ -162,5 +147,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\background_home_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add_contact.png" />
   </ItemGroup>
 </Project>

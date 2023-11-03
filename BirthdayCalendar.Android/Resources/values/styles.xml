@@ -5,5 +5,7 @@
 	  <!--<item name="android:windowBackground">@drawable/background</item>-->
 	  <item name="android:navigationBarColor">@color/launcher_background</item>
 	  <item name="android:windowLightNavigationBar">true</item>
+	  <item name="android:colorControlActivated">@color/darkGreen</item>
+	  <item name="android:colorControlNormal">@color/transparent</item>
   </style>
 </resources>
