@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace BirthdayCalendar
+namespace BirthdayCalendar.Pages
 {
     public partial class MainPage : ContentPage
     {
@@ -53,7 +53,7 @@ namespace BirthdayCalendar
 
         private async void NavBtnList_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ContactsList());
+            await Navigation.PushAsync(new FriendsPage());
         }
     }
 }

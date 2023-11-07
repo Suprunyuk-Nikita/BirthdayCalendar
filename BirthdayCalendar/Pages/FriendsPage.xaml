@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BirthdayCalendar.ContactsList"
+             x:Class="BirthdayCalendar.Pages.FriendsPage"
              NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand">
-            <Image x:Name="Background" Source="background_contacts_page.png" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
-            <StackLayout Padding="15, 8, 15, 10" Spacing="0">
+            <Image x:Name="Background" Source="FriendsPage_background.png" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
+            <StackLayout Padding="15, 15, 15, 10" Spacing="0">
                 <StackLayout Orientation="Horizontal">
                     <Frame x:Name="searchPanel" BackgroundColor="#EFF2F6" BorderColor="#145535" CornerRadius="32" Padding="0">
                         <StackLayout Orientation="Horizontal" Spacing="0">
                             <Image x:Name="searchIcon" Source="loupe_gray.png"/>
-                            <Entry x:Name="searchInput" Placeholder="Поиск" PlaceholderColor="#B3B3B3" TextColor="#000" FontFamily="Arial"/>
+                            <Entry x:Name="searchInput" Placeholder="Search" PlaceholderColor="#B3B3B3" TextColor="#000" FontFamily="Arial"/>
                         </StackLayout>
                     </Frame>
                     <Label x:Name="contactsScore" TextColor="#EFF2F6" FontFamily="Comfortaa" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
                     <Grid>
                         <Image x:Name="addContactIcon" Source="add_contact.png"/>
-                        <Button x:Name ="addContactBtn" Clicked="addContactBtn_Clicked" CornerRadius="24" BackgroundColor="#0000"/>
+                        <Button x:Name ="addContactBtn" Clicked="AddContactBtn_Clicked" CornerRadius="24" BackgroundColor="#0000"/>
                     </Grid>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Spacing="0">

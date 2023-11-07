@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace BirthdayCalendar
+namespace BirthdayCalendar.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ContactsList : ContentPage
+    public partial class FriendsPage : ContentPage
     {
-        public ContactsList()
+        public FriendsPage()
         {
             InitializeComponent();
 
@@ -69,9 +69,9 @@ namespace BirthdayCalendar
             await Navigation.PushAsync(new MainPage());
         }
 
-        private void addContactBtn_Clicked(object sender, EventArgs e)
+        async private void AddContactBtn_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new AddPage());
         }
     }
 }

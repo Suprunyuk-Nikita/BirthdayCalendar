@@ -143,12 +143,15 @@
     <BundleResource Include="Resources\user.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\background_contacts_page.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\background_home_page.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\add_contact.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MainPage_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FriendsPage_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\AddPage_background.png" />
   </ItemGroup>
 </Project>
