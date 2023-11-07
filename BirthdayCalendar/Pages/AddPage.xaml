@@ -30,6 +30,10 @@
                     <Entry x:Name="InputName" Placeholder="Enter name here" PlaceholderColor="#145535" Grid.Column="1" Grid.Row="0"/>
                     <Entry x:Name="InputSurname" Placeholder="Enter surname here" PlaceholderColor="#145535" Grid.Column="1" Grid.Row="1"/>
                     <DatePicker x:Name="InputDate" TextColor="#000" Grid.Column="1" Grid.Row="2"/>
+                    <Grid Grid.Column="1" Grid.Row="3">
+                        <Label x:Name="PhotoBtnLabel" Text="select photo -->" TextColor="#145535" VerticalOptions="CenterAndExpand" />
+                        <Button x:Name="PhotoBtn" BackgroundColor="#0000" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    </Grid>
                 </Grid>
                 <StackLayout HorizontalOptions="Center" VerticalOptions="EndAndExpand" Spacing="0">
                     <Button x:Name="AddBtn" Text="save" TextColor="#EFF2F6" BackgroundColor="#145535" FontAttributes="Bold" FontFamily="Comfortaa" Padding="0, -2, 0, 2"/>

@@ -64,6 +64,13 @@ namespace BirthdayCalendar.Pages
 
             InputDate.Margin = new Thickness(10d * scaleFactor, -2d * scaleFactor, 0, 0);
 
+            PhotoBtnLabel.FontSize = 12d * scaleFactor;
+            PhotoBtnLabel.Margin = new Thickness(15d * scaleFactor, 5d * scaleFactor, 0, 0);
+
+            PhotoBtn.HeightRequest = 20 * scaleFactor;
+            PhotoBtn.WidthRequest = 100d * scaleFactor;
+            PhotoBtn.Margin = new Thickness(10d * scaleFactor, 5d * scaleFactor, 0, 0);
+
             AddBtn.FontSize = 16d * scaleFactor;
 
         }
