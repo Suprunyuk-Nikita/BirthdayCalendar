@@ -80,10 +80,8 @@ namespace BirthdayCalendar.Pages
             List<Person> personsList = new List<Person>(await App.PersonsDB.GetCountAsync());
             personsList = await App.PersonsDB.GetPersonsAsync();
 
-            for (int i = 0; i < personsList.Count; i++)
+            foreach (Person person in personsList)
             {
-                Person person = new Person();
-
                 StackLayout friendStackLayout = new StackLayout();
                 friendStackLayout.Orientation = StackOrientation.Horizontal;
                 friendStackLayout.Spacing = 0;
@@ -100,28 +98,44 @@ namespace BirthdayCalendar.Pages
                 Image friendIcon = new Image();
                 friendIcon.HorizontalOptions = LayoutOptions.Center;
                 friendIcon.VerticalOptions = LayoutOptions.Center;
+                friendIcon.Source = person.Image;
 
                 Label friendInfo = new Label();
                 friendInfo.FontSize = 16d * scaleFactor;
                 friendInfo.FontAttributes = FontAttributes.Bold;
+                friendInfo.VerticalOptions = LayoutOptions.Center;
                 friendInfo.FontFamily = "Comfortaa";
                 friendInfo.TextColor = Color.FromHex("#EFF2F6");
-                friendInfo.Padding = new Thickness(17d * scaleFactor, 0, 0, 0);
+                friendInfo.Padding = new Thickness(17d * scaleFactor, -2d * scaleFactor, 0, 0);
+                friendInfo.Text = person.Name + "\n" + person.Date;
 
-                Image friendBtn = new Image();
+                Grid friendBtnBox = new Grid();
+                friendBtnBox.HeightRequest = 34d * scaleFactor;
+                friendBtnBox.WidthRequest = 34d * scaleFactor;
+                friendBtnBox.VerticalOptions = LayoutOptions.Center;
+                friendBtnBox.HorizontalOptions = LayoutOptions.EndAndExpand;
+
+                Button friendBtn = new Button();
                 friendBtn.HeightRequest = 34d * scaleFactor;
                 friendBtn.WidthRequest = 34d * scaleFactor;
-                friendBtn.Source = "person_button.png";
-                friendBtn.HorizontalOptions = LayoutOptions.EndAndExpand;
+                friendBtn.BackgroundColor = Color.FromHex("#0000");
+                friendBtn.TextColor = Color.FromHex("#0000");
+                friendBtn.Clicked += FriendBtn_Clicked;
+                friendBtn.Text = person.ID.ToString();
 
-                person = personsList[i];
-                friendIcon.Source = person.Image;
-                friendInfo.Text = person.Name + "\n" + person.Date;
+                Image friendBtnIcon = new Image();
+                friendBtnIcon.HeightRequest = 34d * scaleFactor;
+                friendBtnIcon.WidthRequest = 34d * scaleFactor;
+                friendBtnIcon.Source = "person_button.png";
 
                 friendIconMask.Content = friendIcon;
                 friendStackLayout.Children.Add(friendIconMask);
                 friendStackLayout.Children.Add(friendInfo);
-                friendStackLayout.Children.Add(friendBtn);
+
+                friendBtnBox.Children.Add(friendBtnIcon);
+                friendBtnBox.Children.Add(friendBtn);
+
+                friendStackLayout.Children.Add(friendBtnBox);
 
                 friendsList.Children.Add(friendStackLayout);
             }
@@ -129,7 +143,7 @@ namespace BirthdayCalendar.Pages
 
         private async void FriendBtn_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("", $"{(sender as Button).Text}", "Ok");
+            await DisplayAlert("friend ID", $"{(sender as Button).Text}", "Ok");
         }
         private async void NavBtnHome_Clicked(object sender, EventArgs e)
         {
