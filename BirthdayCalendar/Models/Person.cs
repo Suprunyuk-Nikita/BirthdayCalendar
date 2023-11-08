@@ -7,9 +7,9 @@ namespace BirthdayCalendar.Models
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        public string name { get; set; }
-        public string surname { get; set; }
-        public string image { get; set; }
-        public DateTime date { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Date { get; set; }
+        public string Image { get; set; }
     }
 }

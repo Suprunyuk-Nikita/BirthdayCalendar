@@ -17,9 +17,8 @@ namespace BirthdayCalendar.Pages
         public AddPage()
         {
             InitializeComponent();
-
-            BindingContext = new Person();
         }
+        
 
         protected override void OnAppearing()
         {
@@ -95,7 +94,44 @@ namespace BirthdayCalendar.Pages
 
         private async void AddBtn_Clicked(object sender, EventArgs e)
         {
+            string name, surname, date, image;
+            Person person = new Person();
 
+            if (!InputName.Text.Trim().Contains(" ") && InputName.Text.Trim() != "")
+            {
+                name = InputName.Text.Trim();
+            }
+            else
+            {
+                await DisplayAlert("Error", "Invalid name entry", "Ok");
+                return;
+            }
+
+            if (!InputSurname.Text.Trim().Contains(" ") && InputSurname.Text.Trim() != "")
+            {
+                surname = InputSurname.Text.Trim();
+            }
+            else
+            {
+                await DisplayAlert("Error", "Invalid name entry", "Ok");
+                return;
+            }
+
+            DateTime inputDate = InputDate.Date;
+            date = inputDate.ToString("dd.MM.yyyy");
+
+            image = "";
+            if (image == "")
+            {
+                image = "user.png";
+            }
+
+            person.Name = name;
+            person.Surname = surname;
+            person.Date = date;
+            person.Image = image;
+            
+            
         }
     }
 }
