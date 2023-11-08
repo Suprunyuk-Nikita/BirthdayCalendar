@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BirthdayCalendar.Pages.AddPage"
-             NavigationPage.HasNavigationBar="false">
+             NavigationPage.HasNavigationBar="false"
+             xmlns:local="clr-namespace:BirthdayCalendar.Behaviors">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand">
             <Image x:Name="Background" Source="AddPage_background.png" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
@@ -27,16 +28,24 @@
                     <Label x:Name="SurnameLabel" Text="Surname" TextColor="#000" FontFamily="Comfortaa" Grid.Column="0" Grid.Row="1"/>
                     <Label x:Name="DateLabel" Text="Date" TextColor="#000" FontFamily="Comfortaa" Grid.Column="0" Grid.Row="2"/>
                     <Label x:Name="PhotoLabel" Text="Photo" TextColor="#000" FontFamily="Comfortaa" Grid.Column="0" Grid.Row="3"/>
-                    <Entry x:Name="InputName" Placeholder="Enter name here" PlaceholderColor="#145535" Grid.Column="1" Grid.Row="0"/>
-                    <Entry x:Name="InputSurname" Placeholder="Enter surname here" PlaceholderColor="#145535" Grid.Column="1" Grid.Row="1"/>
-                    <DatePicker x:Name="InputDate" TextColor="#000" Grid.Column="1" Grid.Row="2"/>
+                    <Entry x:Name="InputName" Placeholder="Enter name here" PlaceholderColor="#145535" Grid.Column="1" Grid.Row="0">
+                        <Entry.Behaviors>
+                            <local:WhitespaceCheckBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Entry x:Name="InputSurname" Placeholder="Enter surname here" PlaceholderColor="#145535" Grid.Column="1" Grid.Row="1">
+                        <Entry.Behaviors>
+                            <local:WhitespaceCheckBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
+                    <DatePicker x:Name="InputDate" TextColor="#000" Format="dd.MM.yyyy" Grid.Column="1" Grid.Row="2"/>
                     <Grid Grid.Column="1" Grid.Row="3">
                         <Label x:Name="PhotoBtnLabel" Text="select photo -->" TextColor="#145535" VerticalOptions="CenterAndExpand" />
-                        <Button x:Name="PhotoBtn" BackgroundColor="#0000" VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <Button x:Name="PhotoBtn" Clicked="PhotoBtn_Clicked" BackgroundColor="#0000" VerticalOptions="Center" HorizontalOptions="Start"/>
                     </Grid>
                 </Grid>
                 <StackLayout HorizontalOptions="Center" VerticalOptions="EndAndExpand" Spacing="0">
-                    <Button x:Name="AddBtn" Text="save" TextColor="#EFF2F6" BackgroundColor="#145535" FontAttributes="Bold" FontFamily="Comfortaa" Padding="0, -2, 0, 2"/>
+                    <Button x:Name="AddBtn" Clicked="AddBtn_Clicked" Text="save" TextColor="#EFF2F6" BackgroundColor="#145535" FontAttributes="Bold" FontFamily="Comfortaa" Padding="0, -2, 0, 2"/>
                 </StackLayout>
             </StackLayout>
             

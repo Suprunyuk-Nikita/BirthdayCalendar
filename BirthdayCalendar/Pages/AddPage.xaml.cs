@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Android.Content;
+using Android.Widget;
+using BirthdayCalendar.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +12,18 @@ using Xamarin.Forms.Xaml;
 
 namespace BirthdayCalendar.Pages
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddPage : ContentPage
     {
         public AddPage()
         {
             InitializeComponent();
+
+            BindingContext = new Person();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
             Background.SizeChanged += BackgroundSizeChanged;
 
@@ -28,12 +37,11 @@ namespace BirthdayCalendar.Pages
             ResizeObjects();
         }
 
-        public void ResizeObjects()
+        private void ResizeObjects()
         {
             const double oldBackgroundWidth = 320;
             double backgroundWidth = Background.Width;
             double scaleFactor = backgroundWidth / oldBackgroundWidth;
-            // ./1,61 margin top
 
             NavBar.Margin = new Thickness(0, 68d * scaleFactor / 1.61d, 0, 0);
 
@@ -75,9 +83,19 @@ namespace BirthdayCalendar.Pages
 
         }
 
-        async private void NavBtnBack_Clicked(object sender, EventArgs e)
+        private async void NavBtnBack_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new FriendsPage());
+        }
+
+        private async void PhotoBtn_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Warning", "In developing...", "Ok");
+        }
+
+        private async void AddBtn_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

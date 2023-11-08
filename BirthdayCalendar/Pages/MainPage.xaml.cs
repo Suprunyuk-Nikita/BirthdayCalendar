@@ -29,10 +29,11 @@ namespace BirthdayCalendar.Pages
         private void BackgroundSizeChanged(object sender, EventArgs e)
         {
             ResizeObjects();
+
             Background.SizeChanged -= BackgroundSizeChanged;
         }
 
-        public void ResizeObjects()
+        private void ResizeObjects()
         {
             const double oldBackgroundWidth = 320;
             double backgroundWidth = Background.Width;

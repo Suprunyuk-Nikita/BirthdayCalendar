@@ -5,7 +5,7 @@ using SQLite;
 
 namespace BirthdayCalendar.Data
 {
-    class PersonsDB
+    public class PersonsDB
     {
         readonly SQLiteAsyncConnection db;
 

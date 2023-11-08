@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using BirthdayCalendar.Models;
 
 namespace BirthdayCalendar.Pages
 {
@@ -15,10 +16,17 @@ namespace BirthdayCalendar.Pages
         public FriendsPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
             Background.SizeChanged += BackgroundSizeChanged;
 
             ResizeObjects();
+
+            contactsScore.Text = "0";
         }
 
         private void BackgroundSizeChanged(object sender, EventArgs e)
@@ -28,10 +36,9 @@ namespace BirthdayCalendar.Pages
 
             ResizeObjects();
 
-            contactsScore.Text = "0";
         }
 
-        public void ResizeObjects()
+        private void ResizeObjects()
         {
             const double oldBackgroundWidth = 320;
             double backgroundWidth = Background.Width;
