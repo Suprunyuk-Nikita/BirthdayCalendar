@@ -44,5 +44,11 @@ namespace BirthdayCalendar.Data
         {
             return db.DeleteAsync(person);
         }
+
+        public Task<int> GetCountAsync()
+        {
+            return db.Table<Person>().CountAsync();
+        }
+
     }
 }

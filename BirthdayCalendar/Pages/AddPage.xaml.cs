@@ -1,14 +1,6 @@
-﻿using Android.Content;
-using Android.Widget;
-using BirthdayCalendar.Models;
+﻿using BirthdayCalendar.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace BirthdayCalendar.Pages
 {
@@ -18,8 +10,6 @@ namespace BirthdayCalendar.Pages
         {
             InitializeComponent();
         }
-        
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -97,7 +87,13 @@ namespace BirthdayCalendar.Pages
             string name, surname, date, image;
             Person person = new Person();
 
-            if (!InputName.Text.Trim().Contains(" ") && InputName.Text.Trim() != "")
+            if (InputName.Text == null) 
+            {
+                await DisplayAlert("Error", "Invalid name entry", "Ok");
+                return;
+            }
+
+            if (!InputName.Text.Trim().Contains(" ") & InputName.Text.Trim() != "")
             {
                 name = InputName.Text.Trim();
             }
@@ -107,13 +103,19 @@ namespace BirthdayCalendar.Pages
                 return;
             }
 
-            if (!InputSurname.Text.Trim().Contains(" ") && InputSurname.Text.Trim() != "")
+            if (InputSurname.Text == null)
+            {
+                await DisplayAlert("Error", "Invalid surname entry", "Ok");
+                return;
+            }
+
+            if (!InputSurname.Text.Trim().Contains(" ") & InputSurname.Text.Trim() != "")
             {
                 surname = InputSurname.Text.Trim();
             }
             else
             {
-                await DisplayAlert("Error", "Invalid name entry", "Ok");
+                await DisplayAlert("Error", "Invalid surname entry", "Ok");
                 return;
             }
 
@@ -126,12 +128,16 @@ namespace BirthdayCalendar.Pages
                 image = "user.png";
             }
 
-            person.Name = name;
-            person.Surname = surname;
+            person.Name = name + " " + surname;
             person.Date = date;
             person.Image = image;
-            
-            
+
+            await App.PersonsDB.SavePersonAsync(person);
+
+            InputName.Text = "";
+            InputName.Placeholder = "Enter name here";
+            InputSurname.Text = "";
+            InputSurname.Placeholder = "Enter surname here";
         }
     }
 }

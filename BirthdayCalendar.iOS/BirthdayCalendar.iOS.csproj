@@ -155,6 +155,6 @@
     <BundleResource Include="Resources\AddPage_background.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\arrow.png" />
+    <BundleResource Include="Resources\person_button.png" />
   </ItemGroup>
 </Project>

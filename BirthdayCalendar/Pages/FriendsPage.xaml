@@ -5,24 +5,65 @@
              NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand">
-            <Image x:Name="Background" Source="FriendsPage_background.png" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
-            <StackLayout Padding="15, 15, 15, 10" Spacing="0">
+            <Image x:Name="Background" 
+                   Source="FriendsPage_background.png" 
+                   HorizontalOptions="FillAndExpand" 
+                   Aspect="AspectFill"/>
+            <StackLayout Padding="15, 15, 15, 10" 
+                         Spacing="0">
                 <StackLayout Orientation="Horizontal">
-                    <Frame x:Name="searchPanel" BackgroundColor="#EFF2F6" BorderColor="#145535" CornerRadius="32" Padding="0">
-                        <StackLayout Orientation="Horizontal" Spacing="0">
-                            <Image x:Name="searchIcon" Source="loupe_gray.png"/>
-                            <Entry x:Name="searchInput" Placeholder="Search" PlaceholderColor="#B3B3B3" TextColor="#000" FontFamily="Arial"/>
+                    <Frame x:Name="searchPanel" 
+                           BackgroundColor="#EFF2F6" 
+                           BorderColor="#145535" 
+                           CornerRadius="32" 
+                           Padding="0">
+                        <StackLayout Orientation="Horizontal" 
+                                     Spacing="0">
+                            <Image x:Name="searchIcon" 
+                                   Source="loupe_gray.png"/>
+                            <Entry x:Name="searchInput" 
+                                   Placeholder="Search" 
+                                   PlaceholderColor="#B3B3B3" 
+                                   TextColor="#000" 
+                                   FontFamily="Arial"/>
                         </StackLayout>
                     </Frame>
-                    <Label x:Name="contactsScore" TextColor="#EFF2F6" FontFamily="Comfortaa" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                    <Label x:Name="contactsScore" 
+                           TextColor="#EFF2F6" 
+                           FontFamily="Comfortaa"
+                           FontAttributes="Bold" 
+                           HorizontalOptions="EndAndExpand"
+                           VerticalOptions="Center"/>
                     <Grid>
-                        <Image x:Name="addContactIcon" Source="add_contact.png"/>
-                        <Button x:Name ="addContactBtn" Clicked="AddContactBtn_Clicked" CornerRadius="24" BackgroundColor="#0000"/>
+                        <Image x:Name="addContactIcon" 
+                               Source="add_contact.png"/>
+                        <Button x:Name ="addContactBtn" 
+                                Clicked="AddContactBtn_Clicked" 
+                                CornerRadius="24"
+                                BackgroundColor="#0000"/>
                     </Grid>
                 </StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Spacing="0">
-                    <Button x:Name="NavBtnHome" Clicked="NavBtnHome_Clicked" BackgroundColor="#0000" CornerRadius="58" HorizontalOptions="Center" VerticalOptions="End"/>
-                    <Button x:Name="NavBtnList" BackgroundColor="#0000" CornerRadius="58" HorizontalOptions="Center" VerticalOptions="End"/>
+
+                <ScrollView x:Name="friendsBox">
+                    <StackLayout x:Name="friendsList">
+                        
+                    </StackLayout>
+                </ScrollView>
+
+                <StackLayout Orientation="Horizontal" 
+                             HorizontalOptions="Center"
+                             VerticalOptions="EndAndExpand" 
+                             Spacing="0">
+                    <Button x:Name="NavBtnHome" 
+                            Clicked="NavBtnHome_Clicked" 
+                            BackgroundColor="#0000" CornerRadius="58"
+                            HorizontalOptions="Center"
+                            VerticalOptions="End"/>
+                    <Button x:Name="NavBtnList"
+                            BackgroundColor="#0000" 
+                            CornerRadius="58"
+                            HorizontalOptions="Center"
+                            VerticalOptions="End"/>
                 </StackLayout>
             </StackLayout>
         </Grid>

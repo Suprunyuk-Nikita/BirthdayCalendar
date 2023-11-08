@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using BirthdayCalendar.Models;
@@ -18,15 +14,18 @@ namespace BirthdayCalendar.Pages
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
             Background.SizeChanged += BackgroundSizeChanged;
 
-            ResizeObjects();
+            ResizeObjects(GetScaleFactor());
 
-            contactsScore.Text = "0";
+            int score = await App.PersonsDB.GetCountAsync();
+            contactsScore.Text = score.ToString();
+
+            ShowDB(GetScaleFactor());
         }
 
         private void BackgroundSizeChanged(object sender, EventArgs e)
@@ -34,16 +33,19 @@ namespace BirthdayCalendar.Pages
 
             Background.SizeChanged -= BackgroundSizeChanged;
 
-            ResizeObjects();
-
+            ResizeObjects(GetScaleFactor());
         }
 
-        private void ResizeObjects()
+        private double GetScaleFactor()
         {
             const double oldBackgroundWidth = 320;
             double backgroundWidth = Background.Width;
             double scaleFactor = backgroundWidth / oldBackgroundWidth;
+            return scaleFactor;
+        }
 
+        private void ResizeObjects(double scaleFactor)
+        {
             searchPanel.HeightRequest = 30d * scaleFactor;
             searchPanel.WidthRequest = 187d * scaleFactor;
 
@@ -64,6 +66,8 @@ namespace BirthdayCalendar.Pages
 
             contactsScore.FontSize = 16d * scaleFactor;
 
+            friendsBox.Margin = new Thickness(0, 10d * scaleFactor);
+
             NavBtnHome.HeightRequest = 58d * scaleFactor;
             NavBtnHome.WidthRequest = 58d * scaleFactor;
 
@@ -71,12 +75,68 @@ namespace BirthdayCalendar.Pages
             NavBtnList.WidthRequest = 58d * scaleFactor;
         }
 
-        async private void NavBtnHome_Clicked(object sender, EventArgs e)
+        private async void ShowDB(double scaleFactor)
+        {
+            List<Person> personsList = new List<Person>(await App.PersonsDB.GetCountAsync());
+            personsList = await App.PersonsDB.GetPersonsAsync();
+
+            for (int i = 0; i < personsList.Count; i++)
+            {
+                Person person = new Person();
+
+                StackLayout friendStackLayout = new StackLayout();
+                friendStackLayout.Orientation = StackOrientation.Horizontal;
+                friendStackLayout.Spacing = 0;
+                friendStackLayout.Margin = new Thickness(0, 0, 0, 20d * scaleFactor);
+
+                Frame friendIconMask = new Frame();
+                friendIconMask.HeightRequest = 40d * scaleFactor;
+                friendIconMask.WidthRequest = 40d * scaleFactor;
+                friendIconMask.VerticalOptions = LayoutOptions.Center;
+                friendIconMask.CornerRadius = Convert.ToInt32(40d * scaleFactor);
+                friendIconMask.Padding = new Thickness(0);
+                friendIconMask.IsClippedToBounds = true;
+
+                Image friendIcon = new Image();
+                friendIcon.HorizontalOptions = LayoutOptions.Center;
+                friendIcon.VerticalOptions = LayoutOptions.Center;
+
+                Label friendInfo = new Label();
+                friendInfo.FontSize = 16d * scaleFactor;
+                friendInfo.FontAttributes = FontAttributes.Bold;
+                friendInfo.FontFamily = "Comfortaa";
+                friendInfo.TextColor = Color.FromHex("#EFF2F6");
+                friendInfo.Padding = new Thickness(17d * scaleFactor, 0, 0, 0);
+
+                Image friendBtn = new Image();
+                friendBtn.HeightRequest = 34d * scaleFactor;
+                friendBtn.WidthRequest = 34d * scaleFactor;
+                friendBtn.Source = "person_button.png";
+                friendBtn.HorizontalOptions = LayoutOptions.EndAndExpand;
+
+                person = personsList[i];
+                friendIcon.Source = person.Image;
+                friendInfo.Text = person.Name + "\n" + person.Date;
+
+                friendIconMask.Content = friendIcon;
+                friendStackLayout.Children.Add(friendIconMask);
+                friendStackLayout.Children.Add(friendInfo);
+                friendStackLayout.Children.Add(friendBtn);
+
+                friendsList.Children.Add(friendStackLayout);
+            }
+        }
+
+        private async void FriendBtn_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("", $"{(sender as Button).Text}", "Ok");
+        }
+        private async void NavBtnHome_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainPage());
         }
 
-        async private void AddContactBtn_Clicked(object sender, EventArgs e)
+        private async void AddContactBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddPage());
         }

@@ -6,13 +6,32 @@
              xmlns:local="clr-namespace:BirthdayCalendar.Behaviors">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand">
-            <Image x:Name="Background" Source="AddPage_background.png" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
-            <StackLayout Padding="15, 0, 15, 10" Spacing="0">
-                <StackLayout x:Name="NavBar" Orientation="Horizontal" HorizontalOptions="Center" Spacing="0">
-                    <Button x:Name="NavBtnBack" Clicked="NavBtnBack_Clicked" BackgroundColor="#0000" CornerRadius="58" HorizontalOptions="Center" VerticalOptions="End"/>
-                    <Button x:Name="NavBtnAdd" BackgroundColor="#0000" CornerRadius="58" HorizontalOptions="Center" VerticalOptions="End"/>
+            <Image x:Name="Background" 
+                   Source="AddPage_background.png" 
+                   HorizontalOptions="FillAndExpand" 
+                   Aspect="AspectFill"/>
+            <StackLayout Padding="15, 0, 15, 10" 
+                         Spacing="0">
+                <StackLayout x:Name="NavBar" 
+                             Orientation="Horizontal" 
+                             HorizontalOptions="Center" 
+                             Spacing="0">
+                    <Button x:Name="NavBtnBack" 
+                            Clicked="NavBtnBack_Clicked"
+                            BackgroundColor="#0000" 
+                            CornerRadius="58" 
+                            HorizontalOptions="Center"
+                            VerticalOptions="End"/>
+                    <Button x:Name="NavBtnAdd" 
+                            BackgroundColor="#0000"
+                            CornerRadius="58" HorizontalOptions="Center" 
+                            VerticalOptions="End"/>
                 </StackLayout>
-                <Label x:Name="Title" Text="Add your&#10;friends" TextColor="#EFF2F6" FontFamily="Comfortaa" FontAttributes="Bold"/>
+                <Label x:Name="Title" 
+                       Text="Add your&#10;friends"
+                       TextColor="#EFF2F6" 
+                       FontFamily="Comfortaa"
+                       FontAttributes="Bold"/>
                 <Grid x:Name="InputPanel">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -24,31 +43,78 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="NameLabel" Text="Name" TextColor="#000" FontFamily="Comfortaa" Grid.Column="0" Grid.Row="0"/>
-                    <Label x:Name="SurnameLabel" Text="Surname" TextColor="#000" FontFamily="Comfortaa" Grid.Column="0" Grid.Row="1"/>
-                    <Label x:Name="DateLabel" Text="Date" TextColor="#000" FontFamily="Comfortaa" Grid.Column="0" Grid.Row="2"/>
-                    <Label x:Name="PhotoLabel" Text="Photo" TextColor="#000" FontFamily="Comfortaa" Grid.Column="0" Grid.Row="3"/>
-                    <Entry x:Name="InputName" Placeholder="Enter name here" PlaceholderColor="#145535" Grid.Column="1" Grid.Row="0">
+                    <Label x:Name="NameLabel" 
+                           Text="Name"
+                           TextColor="#000" 
+                           FontFamily="Comfortaa"
+                           Grid.Column="0"
+                           Grid.Row="0"/>
+                    <Label x:Name="SurnameLabel"
+                           Text="Surname" 
+                           TextColor="#000" 
+                           FontFamily="Comfortaa" 
+                           Grid.Column="0"
+                           Grid.Row="1"/>
+                    <Label x:Name="DateLabel" 
+                           Text="Date"
+                           TextColor="#000"
+                           FontFamily="Comfortaa"
+                           Grid.Column="0"
+                           Grid.Row="2"/>
+                    <Label x:Name="PhotoLabel"
+                           Text="Photo"
+                           TextColor="#000"
+                           FontFamily="Comfortaa" 
+                           Grid.Column="0"
+                           Grid.Row="3"/>
+                    <Entry x:Name="InputName"
+                           Placeholder="Enter name here"
+                           PlaceholderColor="#145535"
+                           Grid.Column="1" 
+                           Grid.Row="0">
                         <Entry.Behaviors>
                             <local:WhitespaceCheckBehavior/>
                         </Entry.Behaviors>
                     </Entry>
-                    <Entry x:Name="InputSurname" Placeholder="Enter surname here" PlaceholderColor="#145535" Grid.Column="1" Grid.Row="1">
+                    <Entry x:Name="InputSurname" 
+                           Placeholder="Enter surname here" 
+                           PlaceholderColor="#145535"
+                           Grid.Column="1"
+                           Grid.Row="1">
                         <Entry.Behaviors>
                             <local:WhitespaceCheckBehavior/>
                         </Entry.Behaviors>
                     </Entry>
-                    <DatePicker x:Name="InputDate" TextColor="#000" Format="dd.MM.yyyy" Grid.Column="1" Grid.Row="2"/>
+                    <DatePicker x:Name="InputDate" 
+                                TextColor="#000"
+                                Format="dd.MM.yyyy"
+                                Grid.Column="1"
+                                Grid.Row="2"/>
                     <Grid Grid.Column="1" Grid.Row="3">
-                        <Label x:Name="PhotoBtnLabel" Text="select photo -->" TextColor="#145535" VerticalOptions="CenterAndExpand" />
-                        <Button x:Name="PhotoBtn" Clicked="PhotoBtn_Clicked" BackgroundColor="#0000" VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <Label x:Name="PhotoBtnLabel" 
+                               Text="select photo -->"
+                               TextColor="#145535"
+                               VerticalOptions="CenterAndExpand"/>
+                        <Button x:Name="PhotoBtn"
+                                Clicked="PhotoBtn_Clicked" 
+                                BackgroundColor="#0000"
+                                VerticalOptions="Center" 
+                                HorizontalOptions="Start"/>
                     </Grid>
                 </Grid>
-                <StackLayout HorizontalOptions="Center" VerticalOptions="EndAndExpand" Spacing="0">
-                    <Button x:Name="AddBtn" Clicked="AddBtn_Clicked" Text="save" TextColor="#EFF2F6" BackgroundColor="#145535" FontAttributes="Bold" FontFamily="Comfortaa" Padding="0, -2, 0, 2"/>
+                <StackLayout HorizontalOptions="Center"
+                             VerticalOptions="EndAndExpand"
+                             Spacing="0">
+                    <Button x:Name="AddBtn"
+                            Clicked="AddBtn_Clicked"
+                            Text="save" 
+                            TextColor="#EFF2F6"
+                            BackgroundColor="#145535"
+                            FontAttributes="Bold" 
+                            FontFamily="Comfortaa"
+                            Padding="0, -2, 0, 2"/>
                 </StackLayout>
             </StackLayout>
-            
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -4,16 +4,41 @@
              x:Class="BirthdayCalendar.Pages.MainPage"
              NavigationPage.HasNavigationBar="false">
     <Grid HorizontalOptions="FillAndExpand">
-        <Image x:Name="Background" Source="MainPage_background.png" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
-        <StackLayout Padding="15, 15, 15, 10" Spacing="0">
-            <Label x:Name="Date" FontFamily="Comfortaa" FontAttributes="Bold" TextColor="#EFF2F6" HorizontalTextAlignment="End"/>
-            <Label x:Name="Title" FontFamily="Comfortaa" FontAttributes="Bold" TextColor="#145535" Text="Birthday!" HorizontalTextAlignment="Center"/>
+        <Image x:Name="Background"
+               Source="MainPage_background.png" 
+               HorizontalOptions="FillAndExpand"
+               Aspect="AspectFill"/>
+        <StackLayout Padding="15, 15, 15, 10" 
+                     Spacing="0">
+            <Label x:Name="Date"
+                   FontFamily="Comfortaa"
+                   FontAttributes="Bold"
+                   TextColor="#EFF2F6" 
+                   HorizontalTextAlignment="End"/>
+            <Label x:Name="Title" 
+                   FontFamily="Comfortaa" 
+                   FontAttributes="Bold" 
+                   TextColor="#145535" 
+                   Text="Birthday!" 
+                   HorizontalTextAlignment="Center"/>
             <RelativeLayout>
                 <!--Тут список из БД-->
             </RelativeLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Spacing="0">
-                <Button x:Name="NavBtnHome" BackgroundColor="#0000" CornerRadius="58" HorizontalOptions="Center" VerticalOptions="End"/>
-                <Button x:Name="NavBtnList" Clicked="NavBtnList_Clicked" BackgroundColor="#0000" CornerRadius="58" HorizontalOptions="Center" VerticalOptions="End"/>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         VerticalOptions="EndAndExpand"
+                         Spacing="0">
+                <Button x:Name="NavBtnHome"
+                        BackgroundColor="#0000" 
+                        CornerRadius="58
+                        " HorizontalOptions="Center"
+                        VerticalOptions="End"/>
+                <Button x:Name="NavBtnList" 
+                        Clicked="NavBtnList_Clicked" 
+                        BackgroundColor="#0000" 
+                        CornerRadius="58" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="End"/>
             </StackLayout>
         </StackLayout>
     </Grid>

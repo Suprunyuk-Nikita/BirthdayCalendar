@@ -1,5 +1,4 @@
-﻿using System;
-using SQLite;
+﻿using SQLite;
 
 namespace BirthdayCalendar.Models
 {
@@ -8,7 +7,6 @@ namespace BirthdayCalendar.Models
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string Name { get; set; }
-        public string Surname { get; set; }
         public string Date { get; set; }
         public string Image { get; set; }
     }
