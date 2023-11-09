@@ -102,9 +102,11 @@
                                 HorizontalOptions="Start"/>
                     </Grid>
                 </Grid>
-                <StackLayout HorizontalOptions="Center"
+                <StackLayout Orientation="Horizontal" 
+                             HorizontalOptions="Center"
                              VerticalOptions="EndAndExpand"
-                             Spacing="0">
+                             Spacing="0"
+                             x:Name="bottomPanel">
                     <Button x:Name="AddBtn"
                             Clicked="AddBtn_Clicked"
                             Text="save" 

@@ -82,51 +82,65 @@ namespace BirthdayCalendar.Pages
 
             foreach (Person person in personsList)
             {
-                StackLayout friendStackLayout = new StackLayout();
-                friendStackLayout.Orientation = StackOrientation.Horizontal;
-                friendStackLayout.Spacing = 0;
-                friendStackLayout.Margin = new Thickness(0, 0, 0, 20d * scaleFactor);
+                StackLayout friendStackLayout = new StackLayout
+                {
+                    Orientation = StackOrientation.Horizontal,
+                    Spacing = 0,
+                    Margin = new Thickness(0, 0, 0, 20d * scaleFactor)
+                };
 
-                Frame friendIconMask = new Frame();
-                friendIconMask.HeightRequest = 40d * scaleFactor;
-                friendIconMask.WidthRequest = 40d * scaleFactor;
-                friendIconMask.VerticalOptions = LayoutOptions.Center;
-                friendIconMask.CornerRadius = Convert.ToInt32(40d * scaleFactor);
-                friendIconMask.Padding = new Thickness(0);
-                friendIconMask.IsClippedToBounds = true;
+                Frame friendIconMask = new Frame
+                {
+                    HeightRequest = 40d * scaleFactor,
+                    WidthRequest = 40d * scaleFactor,
+                    VerticalOptions = LayoutOptions.Center,
+                    CornerRadius = Convert.ToInt32(40d * scaleFactor),
+                    Padding = new Thickness(0),
+                    IsClippedToBounds = true
+                };
 
-                Image friendIcon = new Image();
-                friendIcon.HorizontalOptions = LayoutOptions.Center;
-                friendIcon.VerticalOptions = LayoutOptions.Center;
-                friendIcon.Source = person.Image;
+                Image friendIcon = new Image
+                {
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Center,
+                    Source = person.Image
+                };
 
-                Label friendInfo = new Label();
-                friendInfo.FontSize = 16d * scaleFactor;
-                friendInfo.FontAttributes = FontAttributes.Bold;
-                friendInfo.VerticalOptions = LayoutOptions.Center;
-                friendInfo.FontFamily = "Comfortaa";
-                friendInfo.TextColor = Color.FromHex("#EFF2F6");
-                friendInfo.Padding = new Thickness(17d * scaleFactor, -2d * scaleFactor, 0, 0);
-                friendInfo.Text = person.Name + "\n" + person.Date;
+                Label friendInfo = new Label
+                {
+                    FontSize = 16d * scaleFactor,
+                    FontAttributes = FontAttributes.Bold,
+                    VerticalOptions = LayoutOptions.Center,
+                    FontFamily = "Comfortaa",
+                    TextColor = Color.FromHex("#EFF2F6"),
+                    Padding = new Thickness(17d * scaleFactor, -2d * scaleFactor, 0, 0),
+                    Text = person.Name + "\n" + person.Date
+                };
 
-                Grid friendBtnBox = new Grid();
-                friendBtnBox.HeightRequest = 34d * scaleFactor;
-                friendBtnBox.WidthRequest = 34d * scaleFactor;
-                friendBtnBox.VerticalOptions = LayoutOptions.Center;
-                friendBtnBox.HorizontalOptions = LayoutOptions.EndAndExpand;
+                Grid friendBtnBox = new Grid
+                {
+                    HeightRequest = 34d * scaleFactor,
+                    WidthRequest = 34d * scaleFactor,
+                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.EndAndExpand
+                };
 
-                Button friendBtn = new Button();
-                friendBtn.HeightRequest = 34d * scaleFactor;
-                friendBtn.WidthRequest = 34d * scaleFactor;
-                friendBtn.BackgroundColor = Color.FromHex("#0000");
-                friendBtn.TextColor = Color.FromHex("#0000");
+                Button friendBtn = new Button
+                {
+                    HeightRequest = 34d * scaleFactor,
+                    WidthRequest = 34d * scaleFactor,
+                    BackgroundColor = Color.FromHex("#0000"),
+                    TextColor = Color.FromHex("#0000"),
+                    Text = person.ID.ToString()
+                };
                 friendBtn.Clicked += FriendBtn_Clicked;
-                friendBtn.Text = person.ID.ToString();
 
-                Image friendBtnIcon = new Image();
-                friendBtnIcon.HeightRequest = 34d * scaleFactor;
-                friendBtnIcon.WidthRequest = 34d * scaleFactor;
-                friendBtnIcon.Source = "person_button.png";
+                Image friendBtnIcon = new Image
+                {
+                    HeightRequest = 34d * scaleFactor,
+                    WidthRequest = 34d * scaleFactor,
+                    Source = "person_button.png"
+                };
 
                 friendIconMask.Content = friendIcon;
                 friendStackLayout.Children.Add(friendIconMask);
@@ -143,7 +157,21 @@ namespace BirthdayCalendar.Pages
 
         private async void FriendBtn_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("friend ID", $"{(sender as Button).Text}", "Ok");
+            //await DisplayAlert("friend ID", $"{(sender as Button).Text}", "Ok");
+            //string btnText = (sender as Button).Text;
+            //int id = Convert.ToInt32(btnText);
+            //Person person = await App.PersonsDB.GetPersonAsync(id);
+            //await App.PersonsDB.DeletePersonAsync(person);
+
+            //int score = await App.PersonsDB.GetCountAsync();
+            //contactsScore.Text = score.ToString();
+
+            //friendsList.Children.Clear();
+            //ShowDB(GetScaleFactor());
+
+            string btnText = (sender as Button).Text;
+            int id = Convert.ToInt32(btnText);
+            await Navigation.PushAsync(new AddPage(id));
         }
         private async void NavBtnHome_Clicked(object sender, EventArgs e)
         {
