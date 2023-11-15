@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using BirthdayCalendar.Models;
+using System.Linq;
 
 namespace BirthdayCalendar.Pages
 {
@@ -20,20 +21,11 @@ namespace BirthdayCalendar.Pages
 
             Background.SizeChanged += BackgroundSizeChanged;
 
+            ShowDB(GetScaleFactor());
             ResizeObjects(GetScaleFactor());
 
             int score = await App.PersonsDB.GetCountAsync();
             contactsScore.Text = score.ToString();
-
-            ShowDB(GetScaleFactor());
-        }
-
-        private void BackgroundSizeChanged(object sender, EventArgs e)
-        {
-
-            Background.SizeChanged -= BackgroundSizeChanged;
-
-            ResizeObjects(GetScaleFactor());
         }
 
         private double GetScaleFactor()
@@ -44,10 +36,18 @@ namespace BirthdayCalendar.Pages
             return scaleFactor;
         }
 
+        private void BackgroundSizeChanged(object sender, EventArgs e)
+        {
+
+            Background.SizeChanged -= BackgroundSizeChanged;
+            ResizeObjects(GetScaleFactor());
+        }
+
         private void ResizeObjects(double scaleFactor)
         {
             searchPanel.HeightRequest = 30d * scaleFactor;
             searchPanel.WidthRequest = 187d * scaleFactor;
+            searchPanel.Margin = new Thickness(0, 0, 0, 10d * scaleFactor / 1.61d);
 
             searchIcon.HeightRequest = 16d * scaleFactor;
             searchIcon.WidthRequest = 16d * scaleFactor;
@@ -79,6 +79,7 @@ namespace BirthdayCalendar.Pages
         {
             List<Person> personsList = new List<Person>(await App.PersonsDB.GetCountAsync());
             personsList = await App.PersonsDB.GetPersonsAsync();
+            personsList = personsList.OrderBy(p => p.Name).ToList();
 
             foreach (Person person in personsList)
             {
@@ -86,7 +87,7 @@ namespace BirthdayCalendar.Pages
                 {
                     Orientation = StackOrientation.Horizontal,
                     Spacing = 0,
-                    Margin = new Thickness(0, 0, 0, 20d * scaleFactor)
+                    Margin = new Thickness(0, 0, 0, 20d * scaleFactor / 1.61d)
                 };
 
                 Frame friendIconMask = new Frame
@@ -155,32 +156,21 @@ namespace BirthdayCalendar.Pages
             }
         }
 
+        private async void AddContactBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddPage());
+        }
+
         private async void FriendBtn_Clicked(object sender, EventArgs e)
         {
-            //await DisplayAlert("friend ID", $"{(sender as Button).Text}", "Ok");
-            //string btnText = (sender as Button).Text;
-            //int id = Convert.ToInt32(btnText);
-            //Person person = await App.PersonsDB.GetPersonAsync(id);
-            //await App.PersonsDB.DeletePersonAsync(person);
-
-            //int score = await App.PersonsDB.GetCountAsync();
-            //contactsScore.Text = score.ToString();
-
-            //friendsList.Children.Clear();
-            //ShowDB(GetScaleFactor());
-
             string btnText = (sender as Button).Text;
             int id = Convert.ToInt32(btnText);
             await Navigation.PushAsync(new AddPage(id));
         }
+
         private async void NavBtnHome_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainPage());
-        }
-
-        private async void AddContactBtn_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AddPage());
         }
     }
 }

@@ -12,12 +12,14 @@ namespace BirthdayCalendar.Pages
         {
             InitializeComponent();
         }
+
         public AddPage(int ID)
         {
             InitializeComponent();
 
             id = ID;
         }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -25,8 +27,15 @@ namespace BirthdayCalendar.Pages
             Background.SizeChanged += BackgroundSizeChanged;
 
             ChangePageContent(GetScaleFactor());
-
             ResizeObjects(GetScaleFactor());
+        }
+
+        private double GetScaleFactor()
+        {
+            const double oldBackgroundWidth = 320;
+            double backgroundWidth = Background.Width;
+            double scaleFactor = backgroundWidth / oldBackgroundWidth;
+            return scaleFactor;
         }
 
         private void BackgroundSizeChanged(object sender, EventArgs e)
@@ -34,13 +43,6 @@ namespace BirthdayCalendar.Pages
             Background.SizeChanged -= BackgroundSizeChanged;
 
             ResizeObjects(GetScaleFactor());
-        }
-        private double GetScaleFactor()
-        {
-            const double oldBackgroundWidth = 320;
-            double backgroundWidth = Background.Width;
-            double scaleFactor = backgroundWidth / oldBackgroundWidth;
-            return scaleFactor;
         }
 
         private void ResizeObjects(double scaleFactor)
@@ -56,7 +58,7 @@ namespace BirthdayCalendar.Pages
             Title.FontSize = 26 * scaleFactor;
             Title.Margin = new Thickness(0, 22d * scaleFactor / 1.61d, 0, 0);
 
-            InputPanel.Margin = new Thickness(0, 75d * scaleFactor, 0, 0);
+            InputPanel.Margin = new Thickness(0, 75d * scaleFactor / 1.61d, 0, 0);
 
             NameLabel.FontSize = 16d * scaleFactor;
 
@@ -89,13 +91,15 @@ namespace BirthdayCalendar.Pages
         {
             if (id > 0)
             {
+                Title.Text = "Change information\nabout friend";
+
                 Person person = new Person();
                 person = await App.PersonsDB.GetPersonAsync(id);
 
                 InputName.Text = person.Name.Split(' ')[0];
                 InputSurname.Text = person.Name.Split(' ')[1];
                 InputDate.Date = DateTime.ParseExact(person.Date, "dd.MM.yyyy", CultureInfo.InvariantCulture);
-                
+
 
                 Button changeBtn = new Button
                 {
@@ -105,7 +109,7 @@ namespace BirthdayCalendar.Pages
                     FontAttributes = FontAttributes.Bold,
                     FontFamily = "Comfortaa",
                     Padding = new Thickness(0, -2, 0, 2),
-                    Margin = new Thickness(0, 0, 30d * scaleFactor, 0)
+                    Margin = new Thickness(0, 0, 30d * scaleFactor / 1.61d, 0)
                 };
 
                 changeBtn.Clicked += ChangeBtn_Clicked;
@@ -126,6 +130,66 @@ namespace BirthdayCalendar.Pages
                 bottomPanel.Children.Add(changeBtn);
                 bottomPanel.Children.Add(deleteBtn);
             }
+        }
+
+        private async void PhotoBtn_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Warning", "In developing...", "Ok");
+        }
+
+        private async void AddBtn_Clicked(object sender, EventArgs e)
+        {
+            string name, surname, date, image;
+            Person person = new Person();
+
+            if (InputName.Text == null)
+            {
+                await DisplayAlert("Error", "Invalid name entry", "Ok");
+                return;
+            }
+
+            if (!InputName.Text.Trim().Contains(" ") & InputName.Text.Trim() != "")
+            {
+                name = InputName.Text.Trim();
+            }
+            else
+            {
+                await DisplayAlert("Error", "Invalid name entry", "Ok");
+                return;
+            }
+
+            if (InputSurname.Text == null)
+            {
+                await DisplayAlert("Error", "Invalid surname entry", "Ok");
+                return;
+            }
+
+            if (!InputSurname.Text.Trim().Contains(" ") & InputSurname.Text.Trim() != "")
+            {
+                surname = InputSurname.Text.Trim();
+            }
+            else
+            {
+                await DisplayAlert("Error", "Invalid surname entry", "Ok");
+                return;
+            }
+
+            DateTime inputDate = InputDate.Date;
+            date = inputDate.ToString("dd.MM.yyyy");
+
+            image = "";
+            if (image == "")
+            {
+                image = "user.png";
+            }
+
+            person.Name = name + " " + surname;
+            person.Date = date;
+            person.Image = image;
+
+            await App.PersonsDB.SavePersonAsync(person);
+
+            await Navigation.PushAsync(new FriendsPage());
         }
 
         private async void ChangeBtn_Clicked(object sender, EventArgs e)
@@ -194,66 +258,6 @@ namespace BirthdayCalendar.Pages
 
         private async void NavBtnBack_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new FriendsPage());
-        }
-
-        private async void PhotoBtn_Clicked(object sender, EventArgs e)
-        {
-            await DisplayAlert("Warning", "In developing...", "Ok");
-        }
-
-        private async void AddBtn_Clicked(object sender, EventArgs e)
-        {
-            string name, surname, date, image;
-            Person person = new Person();
-
-            if (InputName.Text == null)
-            {
-                await DisplayAlert("Error", "Invalid name entry", "Ok");
-                return;
-            }
-
-            if (!InputName.Text.Trim().Contains(" ") & InputName.Text.Trim() != "")
-            {
-                name = InputName.Text.Trim();
-            }
-            else
-            {
-                await DisplayAlert("Error", "Invalid name entry", "Ok");
-                return;
-            }
-
-            if (InputSurname.Text == null)
-            {
-                await DisplayAlert("Error", "Invalid surname entry", "Ok");
-                return;
-            }
-
-            if (!InputSurname.Text.Trim().Contains(" ") & InputSurname.Text.Trim() != "")
-            {
-                surname = InputSurname.Text.Trim();
-            }
-            else
-            {
-                await DisplayAlert("Error", "Invalid surname entry", "Ok");
-                return;
-            }
-
-            DateTime inputDate = InputDate.Date;
-            date = inputDate.ToString("dd.MM.yyyy");
-
-            image = "";
-            if (image == "")
-            {
-                image = "user.png";
-            }
-
-            person.Name = name + " " + surname;
-            person.Date = date;
-            person.Image = image;
-
-            await App.PersonsDB.SavePersonAsync(person);
-
             await Navigation.PushAsync(new FriendsPage());
         }
     }

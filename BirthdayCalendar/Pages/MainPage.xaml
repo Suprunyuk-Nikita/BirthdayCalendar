@@ -21,9 +21,43 @@
                    TextColor="#145535" 
                    Text="Birthday!" 
                    HorizontalTextAlignment="Center"/>
-            <RelativeLayout>
-                <!--Тут список из БД-->
-            </RelativeLayout>
+
+            <ScrollView x:Name="birthdayListScroll" 
+                        Scrolled="BirthdayListScroll_Scrolled"
+                        Orientation="Horizontal">
+                <StackLayout x:Name="birthdayList"
+                             Orientation="Horizontal"
+                             Spacing="0"/>
+            </ScrollView>
+
+            <StackLayout x:Name="friendInfo"
+                         Spacing="0">
+                <Label x:Name="friendName"
+                         FontFamily="Comfortaa"
+                         FontAttributes="Bold" 
+                         TextColor="#EFF2F6" 
+                         HorizontalTextAlignment="Center"/>
+                <Label x:Name="friendYearOld"
+                         FontFamily="Comfortaa"
+                         FontAttributes="Bold" 
+                         TextColor="#EFF2F6"
+                         HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+            <ScrollView>
+                <StackLayout x:Name="upcomingBirthdayList" 
+                             Spacing="0"
+                             Orientation="Horizontal"
+                             HorizontalOptions="LayoutOptions.CenterAndExpand">
+                    <Label x:Name="upcomingBirthdaysLabel"
+                           FontFamily="Comfortaa"
+                           FontAttributes="Bold" 
+                           TextColor="#EFF2F6"
+                           Text="No upcoming birthdays :(" 
+                           HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </ScrollView>
+
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center"
                          VerticalOptions="EndAndExpand"
